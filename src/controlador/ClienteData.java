@@ -20,4 +20,5 @@ public class ClienteData {
 
         con = conexion.getConexion();
     }
+    
 }
