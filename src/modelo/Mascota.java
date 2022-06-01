@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Manuel Belgrano Nº3
