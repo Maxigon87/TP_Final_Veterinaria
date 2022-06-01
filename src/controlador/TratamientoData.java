@@ -9,6 +9,6 @@ package controlador;
  *
  * @author Manuel Belgrano Nº3
  */
-public class clienteData {
+public class TratamientoData {
     
 }
