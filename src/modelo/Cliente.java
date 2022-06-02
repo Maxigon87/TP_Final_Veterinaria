@@ -5,22 +5,24 @@
  */
 package modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author Manuel Belgrano Nº3
  */
 public class Cliente {
-    int id_cliente;
-    int dni;
-    String apellido;
-    String nombre;
-    String direccion;
-    int telefono;
-    String contactoAlternativo;
-    boolean activo;
+    private int idCliente;
+    private int dni;
+    private String apellido;
+    private String nombre;
+    private String direccion;
+    private int telefono;
+    private String contactoAlternativo;
+    private boolean activo;
 
-    public Cliente(int id_cliente, int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
-        this.id_cliente = id_cliente;
+    public Cliente(int idCliente, int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
+        this.idCliente = idCliente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -43,12 +45,12 @@ public class Cliente {
     public Cliente() {
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public long getDni() {
@@ -106,10 +108,54 @@ public class Cliente {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-    public void setIdCliente(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    @Override
+    public String toString() {
+        return "Cliente{" + "idcliente=" + idCliente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoAlternativo=" + contactoAlternativo + ", activo=" + activo + '}';
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.dni;
+        hash = 89 * hash + Objects.hashCode(this.apellido);
+        hash = 89 * hash + Objects.hashCode(this.nombre);
+        hash = 89 * hash + Objects.hashCode(this.direccion);
+        hash = 89 * hash + this.telefono;
+        hash = 89 * hash + Objects.hashCode(this.contactoAlternativo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.dni != other.dni) {
+            return false;
+        }
+        if (this.telefono != other.telefono) {
+            return false;
+        }
+        if (!Objects.equals(this.apellido, other.apellido)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        if (!Objects.equals(this.contactoAlternativo, other.contactoAlternativo)) {
+            return false;
+        }
+        return true;
+    }    
 }
