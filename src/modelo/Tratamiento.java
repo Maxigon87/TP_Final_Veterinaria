@@ -13,38 +13,52 @@ import java.util.Objects;
  */
 public class Tratamiento {
     int idTratamiento;
+    String tipo;
     String descripcion;
+    String medicamento;
     Consulta consulta;
-    double importe;
-    String tipoTratamiento;
+    Mascota mascota;
+    double precio;
     boolean activo;
 
-    public Tratamiento(int idTratamiento, String descripcion, Consulta consulta, double importe, String tipoTratamiento, boolean activo) {
+    public Tratamiento(int idTratamiento, String tipo, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
+        this.tipo = tipo;
         this.descripcion = descripcion;
+        this.medicamento = medicamento;
         this.consulta = consulta;
-        this.importe = importe;
-        this.tipoTratamiento = tipoTratamiento;
+        this.mascota = mascota;
+        this.precio = precio;
         this.activo = activo;
     }
 
-    public Tratamiento(String descripcion, Consulta consulta, double importe, String tipoTratamiento, boolean activo) {
+    public Tratamiento(String tipo, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
+        this.tipo = tipo;
         this.descripcion = descripcion;
+        this.medicamento = medicamento;
         this.consulta = consulta;
-        this.importe = importe;
-        this.tipoTratamiento = tipoTratamiento;
+        this.mascota = mascota;
+        this.precio = precio;
         this.activo = activo;
     }
 
     public Tratamiento() {
     }
 
-    public int getId_tratamiento() {
+    public int getIdTratamiento() {
         return idTratamiento;
     }
 
-    public void setId_tratamiento(int idTratamiento) {
+    public void setIdTratamiento(int idTratamiento) {
         this.idTratamiento = idTratamiento;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getDescripcion() {
@@ -55,28 +69,36 @@ public class Tratamiento {
         this.descripcion = descripcion;
     }
 
+    public String getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(String medicamento) {
+        this.medicamento = medicamento;
+    }
+
     public Consulta getConsulta() {
         return consulta;
     }
 
-    public void setconsulta(Consulta consulta) {
+    public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
 
-    public double getImporte() {
-        return importe;
+    public Mascota getMascota() {
+        return mascota;
     }
 
-    public void setImporte(double importe) {
-        this.importe = importe;
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
 
-    public String getTipo_tratamiento() {
-        return tipoTratamiento;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setTipo_tratamiento(String tipo_tratamiento) {
-        this.tipoTratamiento = tipo_tratamiento;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public boolean isActivo() {
@@ -89,15 +111,17 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento{" + "id_tratamiento=" + idTratamiento + ", descripcion=" + descripcion + ", consulta=" + consulta + ", importe=" + importe + ", tipo_tratamiento=" + tipoTratamiento + ", activo=" + activo + '}';
+        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipo=" + tipo + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", mascota=" + mascota + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.consulta);
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.importe) ^ (Double.doubleToLongBits(this.importe) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.tipoTratamiento);
+        hash = 67 * hash + Objects.hashCode(this.tipo);
+        hash = 67 * hash + Objects.hashCode(this.medicamento);
+        hash = 67 * hash + Objects.hashCode(this.consulta);
+        hash = 67 * hash + Objects.hashCode(this.mascota);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
         return hash;
     }
 
@@ -113,18 +137,23 @@ public class Tratamiento {
             return false;
         }
         final Tratamiento other = (Tratamiento) obj;
-        if (Double.doubleToLongBits(this.importe) != Double.doubleToLongBits(other.importe)) {
+        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
             return false;
         }
-        if (!Objects.equals(this.tipoTratamiento, other.tipoTratamiento)) {
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        if (!Objects.equals(this.medicamento, other.medicamento)) {
             return false;
         }
         if (!Objects.equals(this.consulta, other.consulta)) {
             return false;
         }
+        if (!Objects.equals(this.mascota, other.mascota)) {
+            return false;
+        }
         return true;
     }
-    
     
     
 }
