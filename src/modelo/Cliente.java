@@ -106,6 +106,10 @@ public class Cliente {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    public void setIdCliente(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
