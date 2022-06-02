@@ -11,32 +11,32 @@ package modelo;
  */
 public class Cliente {
     int id_cliente;
-    long dni;
+    int dni;
     String apellido;
     String nombre;
     String direccion;
-    long telefono;
-    String contacto;
+    int telefono;
+    String contactoAlternativo;
     boolean activo;
 
-    public Cliente(int id_cliente, long dni, String apellido, String nombre, String direccion, long telefono, String contacto, boolean activo) {
+    public Cliente(int id_cliente, int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
         this.id_cliente = id_cliente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.contacto = contacto;
+        this.contactoAlternativo = contactoAlternativo;
         this.activo = activo;
     }
 
-    public Cliente(long dni, String apellido, String nombre, String direccion, long telefono, String contacto, boolean activo) {
+    public Cliente(int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.contacto = contacto;
+        this.contactoAlternativo = contactoAlternativo;
         this.activo = activo;
     }
 
@@ -55,7 +55,7 @@ public class Cliente {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -87,16 +87,16 @@ public class Cliente {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
-    public String getContacto() {
-        return contacto;
+    public String getContactoAlternativo() {
+        return contactoAlternativo;
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    public void setContactoAlternativo(String contactoAlternativo) {
+        this.contactoAlternativo = contactoAlternativo;
     }
 
     public boolean isActivo() {
