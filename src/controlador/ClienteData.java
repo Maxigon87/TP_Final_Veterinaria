@@ -18,7 +18,7 @@ import modelo.Conexion;
 
 /**
  *
- * @author Manuel Belgrano Nº3
+ * @author Maximiliano Gonzalez
  */
 public class ClienteData {
 
@@ -178,5 +178,50 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
         }
         return clientes;
+    }
+
+    public List<Cliente> listarClientesInactivos() {
+
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            sql = "SELECT * FROM cliente WHERE activo= 0  ORDER BY IdCliente ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+
+                cliente.setIdCliente(rs.getInt(1));
+                cliente.setDni(rs.getInt(2));
+                cliente.setNombre(rs.getString(3));
+                cliente.setApellido(rs.getString(4));
+                cliente.setDireccion(rs.getString(5));
+                cliente.setTelefono(rs.getInt(6));
+                cliente.setContactoAlternativo(rs.getString(7));
+                clientes.add(cliente);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+        }
+        return clientes;
+    }
+
+    public void activarCliente(int id) {
+        sql = "UPDATE cliente SET activo =1 WHERE IdCliente=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            ps.close();
+            JOptionPane.showMessageDialog(null, " Se dió de alta al cliente");
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, " No se puedo activar el cliente");
+        }
+
     }
 }
