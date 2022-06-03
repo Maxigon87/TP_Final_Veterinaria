@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Tratamiento {
     private int idTratamiento;
-    private String tipo;
+    private String tipoTratamiento;
     private String descripcion;
     private String medicamento;
     private Consulta consulta;
@@ -21,9 +21,9 @@ public class Tratamiento {
     private double precio;
     private boolean activo;
 
-    public Tratamiento(int idTratamiento, String tipo, String descripcion, String medicamento, Consulta consulta,Mascota mascota, double precio, boolean activo) {
+    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, Consulta consulta,Mascota mascota, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
-        this.tipo = tipo;
+        this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
@@ -32,8 +32,8 @@ public class Tratamiento {
         this.activo = activo;
     }
 
-    public Tratamiento(String tipo, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
-        this.tipo = tipo;
+    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
+        this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
@@ -53,12 +53,12 @@ public class Tratamiento {
         this.idTratamiento = idTratamiento;
     }
 
-    public String gettipo() {
-        return tipo;
+    public String gettipoTratamiento() {
+        return tipoTratamiento;
     }
 
-    public void settipo(String tipo) {
-        this.tipo = tipo;
+    public void settipoTratamiento(String tipoTratamiento) {
+        this.tipoTratamiento = tipoTratamiento;
     }
 
     public String getDescripcion() {
@@ -112,13 +112,13 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipo=" + tipo + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
+        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.tipo);
+        hash = 67 * hash + Objects.hashCode(this.tipoTratamiento);
         hash = 67 * hash + Objects.hashCode(this.medicamento);
         hash = 67 * hash + Objects.hashCode(this.consulta);
         hash = 67 * hash + Objects.hashCode(this.mascota);        
@@ -141,7 +141,7 @@ public class Tratamiento {
         if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
             return false;
         }
-        if (!Objects.equals(this.tipo, other.tipo)) {
+        if (!Objects.equals(this.tipoTratamiento, other.tipoTratamiento)) {
             return false;
         }
         if (!Objects.equals(this.medicamento, other.medicamento)) {
