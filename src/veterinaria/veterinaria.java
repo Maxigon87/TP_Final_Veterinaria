@@ -5,9 +5,11 @@
  */
 package veterinaria;
 
+import modelo.Cliente;
+
 /**
  *
- * @author Manuel Belgrano Nº3
+ * @author Gonzalez Maximiliano
  */
 public class veterinaria {
 
@@ -15,7 +17,21 @@ public class veterinaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Cliente cliente1 = new Cliente(39,"Gonzalez","Maxi","Santa Rosa",2665,"2665",true);
+        Cliente cliente2 = new Cliente(39,"Gonzalez","Maxi","Santa Rosa",2665,"2665",true);
+        Cliente cliente3 = new Cliente(39,"Gonzalez","Mario","Santa Rosa",2665,"2665",true);
+        
+        System.out.println("El primer cliente se llama: " + cliente1.getNombre());
+        
+        System.out.println(cliente1.equals(cliente2));
+        System.out.println(cliente1.equals(cliente3));
+        
+        //******************
+        
+        
+        
+        
+        
     }
     
 }
