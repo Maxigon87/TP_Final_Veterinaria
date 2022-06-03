@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2022 a las 16:07:25
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 02-06-2022 a las 21:45:00
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,8 @@ CREATE TABLE `cliente` (
   `apellido` varchar(50) NOT NULL,
   `direccion` varchar(50) NOT NULL,
   `telefono` int(11) NOT NULL,
-  `alternativa` varchar(50) NOT NULL
+  `contactoAlternativo` varchar(50) NOT NULL,
+  `activo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,9 +47,11 @@ CREATE TABLE `cliente` (
 CREATE TABLE `consulta` (
   `idConsulta` int(11) NOT NULL,
   `precio` double NOT NULL,
-  `fecha` date NOT NULL,
+  `fechaConsulta` date NOT NULL,
   `idMascota` int(11) NOT NULL,
-  `idTratamiento` int(11) NOT NULL
+  `idTratamiento` int(11) NOT NULL,
+  `activo` tinyint(4) NOT NULL,
+  `pesoPromedio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +69,6 @@ CREATE TABLE `mascota` (
   `colorPelaje` varchar(50) NOT NULL,
   `fechaNac` date NOT NULL,
   `pesoActual` double NOT NULL,
-  `pesoPromedio` double NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `idCliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -79,13 +81,12 @@ CREATE TABLE `mascota` (
 
 CREATE TABLE `tratamiento` (
   `idTratamiento` int(11) NOT NULL,
-  `tipo` varchar(50) NOT NULL,
+  `tipoTratamiento` varchar(50) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `medicamento` varchar(100) NOT NULL,
   `precio` double NOT NULL,
   `activo` tinyint(1) NOT NULL,
-  `idConsulta` int(11) NOT NULL,
-  `idMascota` int(11) NOT NULL
+  `idConsulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -143,6 +144,28 @@ ALTER TABLE `mascota`
 --
 ALTER TABLE `tratamiento`
   MODIFY `idTratamiento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `mascota` (`idMascota`);
+
+--
+-- Filtros para la tabla `consulta`
+--
+ALTER TABLE `consulta`
+  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`idConsulta`) REFERENCES `tratamiento` (`idTratamiento`);
+
+--
+-- Filtros para la tabla `mascota`
+--
+ALTER TABLE `mascota`
+  ADD CONSTRAINT `mascota_ibfk_1` FOREIGN KEY (`idMascota`) REFERENCES `consulta` (`idConsulta`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
