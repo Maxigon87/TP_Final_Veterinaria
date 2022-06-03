@@ -30,7 +30,7 @@ public class TratamientoData {
 
     public void agregarTratamiento(Tratamiento tratamiento) {
         try {
-            sql = "INSERT INTO tratamiento (tipo, descripcion, medicamento, precio, activo, idConsulta, idMascota) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO tratamiento (tipoTratamiento, descripcion, medicamento, precio, activo, idConsulta) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -40,8 +40,6 @@ public class TratamientoData {
             ps.setDouble(4, tratamiento.getPrecio());
             ps.setBoolean(5, tratamiento.isActivo());
             ps.setInt(6, tratamiento.getConsulta().getIdConsulta());
-            ps.setInt(7, tratamiento.getMascota().getIdMascota());
-
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
