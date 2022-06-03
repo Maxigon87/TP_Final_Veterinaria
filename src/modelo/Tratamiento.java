@@ -13,28 +13,31 @@ import java.util.Objects;
  */
 public class Tratamiento {
     private int idTratamiento;
-    private String tipoTratamiento;
+    private String tipo;
     private String descripcion;
     private String medicamento;
     private Consulta consulta;
+    private Mascota mascota;
     private double precio;
     private boolean activo;
 
-    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, double precio, boolean activo) {
+    public Tratamiento(int idTratamiento, String tipo, String descripcion, String medicamento, Consulta consulta,Mascota mascota, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
-        this.tipoTratamiento = tipoTratamiento;
+        this.tipo = tipo;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
+        this.mascota = mascota;
         this.precio = precio;
         this.activo = activo;
     }
 
-    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, double precio, boolean activo) {
-        this.tipoTratamiento = tipoTratamiento;
+    public Tratamiento(String tipo, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
+        this.tipo = tipo;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
+        this.mascota = mascota;        
         this.precio = precio;
         this.activo = activo;
     }
@@ -50,12 +53,12 @@ public class Tratamiento {
         this.idTratamiento = idTratamiento;
     }
 
-    public String getTipoTratamiento() {
-        return tipoTratamiento;
+    public String gettipo() {
+        return tipo;
     }
 
-    public void setTipoTratamiento(String tipoTratamiento) {
-        this.tipoTratamiento = tipoTratamiento;
+    public void settipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getDescripcion() {
@@ -82,6 +85,15 @@ public class Tratamiento {
         this.consulta = consulta;
     }
 
+    public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+    
+
     public double getPrecio() {
         return precio;
     }
@@ -100,15 +112,16 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
+        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipo=" + tipo + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.tipoTratamiento);
+        hash = 67 * hash + Objects.hashCode(this.tipo);
         hash = 67 * hash + Objects.hashCode(this.medicamento);
         hash = 67 * hash + Objects.hashCode(this.consulta);
+        hash = 67 * hash + Objects.hashCode(this.mascota);        
         hash = 67 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
         return hash;
     }
@@ -128,13 +141,16 @@ public class Tratamiento {
         if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
             return false;
         }
-        if (!Objects.equals(this.tipoTratamiento, other.tipoTratamiento)) {
+        if (!Objects.equals(this.tipo, other.tipo)) {
             return false;
         }
         if (!Objects.equals(this.medicamento, other.medicamento)) {
             return false;
         }
         if (!Objects.equals(this.consulta, other.consulta)) {
+            return false;
+        }
+        if (!Objects.equals(this.mascota, other.mascota)) {
             return false;
         }
         return true;
