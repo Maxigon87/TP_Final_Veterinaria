@@ -19,7 +19,7 @@ import modelo.Conexion;
  * @author Maximiliano Gonzalez
  */
 public class TratamientoData {
-    
+
     private Connection con = null;
     private String sql;
 
@@ -27,26 +27,26 @@ public class TratamientoData {
 
         con = conexion.getConexion();
     }
-    
+
     public void agregarTratamiento(Tratamiento tratamiento) {
         try {
             sql = "INSERT INTO tratamiento (tipo, descripcion, medicamento, precio, activo, idConsulta, idMascota) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, (int) tratamiento.get
-            ps.setString(2, tratamiento.getNombre());
-            ps.setString(3, tratamiento.getApellido());
-            ps.setString(4, tratamiento.getDireccion());
-            ps.setInt(5, (int) tratamiento.getTelefono());
-            ps.setString(6, tratamiento.getContactoAlternativo());
-            ps.setBoolean(7, tratamiento.isActivo());
+            ps.setString(1, tratamiento.gettipo());
+            ps.setString(2, tratamiento.getDescripcion());
+            ps.setString(3, tratamiento.getMedicamento());
+            ps.setDouble(4, tratamiento.getPrecio());
+            ps.setBoolean(5, tratamiento.isActivo());
+            ps.setInt(6, tratamiento.getConsulta().getIdConsulta());
+            ps.setInt(7, tratamiento.getMascota().getIdMascota());
 
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                tratamiento.setIdtratamiento(rs.getInt(1));
+                tratamiento.setIdTratamiento(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se agregó el tratamiento");
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar el tratamiento");
