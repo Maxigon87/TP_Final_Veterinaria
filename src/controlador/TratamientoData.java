@@ -34,7 +34,7 @@ public class TratamientoData {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, tratamiento.gettipo());
+            ps.setString(1, tratamiento.getTipoTratamiento());
             ps.setString(2, tratamiento.getDescripcion());
             ps.setString(3, tratamiento.getMedicamento());
             ps.setDouble(4, tratamiento.getPrecio());
