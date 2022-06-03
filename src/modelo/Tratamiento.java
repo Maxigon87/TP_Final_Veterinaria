@@ -12,32 +12,32 @@ import java.util.Objects;
  * @author Maximiliano Gonzalez
  */
 public class Tratamiento {
+
     private int idTratamiento;
     private String tipoTratamiento;
     private String descripcion;
     private String medicamento;
-    private Consulta consulta;
-    private Mascota mascota;
     private double precio;
     private boolean activo;
+    private Consulta consulta;
 
-    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
+    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo, Consulta consulta ) {
         this.idTratamiento = idTratamiento;
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
-        this.mascota = mascota;
+       
         this.precio = precio;
         this.activo = activo;
     }
 
-    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
+    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento,double precio, boolean activo, Consulta consulta) {
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
-        this.mascota = mascota;
+       
         this.precio = precio;
         this.activo = activo;
     }
@@ -85,13 +85,7 @@ public class Tratamiento {
         this.consulta = consulta;
     }
 
-    public Mascota getMascota() {
-        return mascota;
-    }
-
-    public void setMascota(Mascota mascota) {
-        this.mascota = mascota;
-    }
+    
 
     public double getPrecio() {
         return precio;
@@ -120,7 +114,7 @@ public class Tratamiento {
         hash = 67 * hash + Objects.hashCode(this.tipoTratamiento);
         hash = 67 * hash + Objects.hashCode(this.medicamento);
         hash = 67 * hash + Objects.hashCode(this.consulta);
-        hash = 67 * hash + Objects.hashCode(this.mascota);        
+       
         hash = 67 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
         return hash;
     }
@@ -149,11 +143,8 @@ public class Tratamiento {
         if (!Objects.equals(this.consulta, other.consulta)) {
             return false;
         }
-        if (!Objects.equals(this.mascota, other.mascota)) {
-            return false;
-        }
+     
         return true;
     }
-    
-    
+
 }
