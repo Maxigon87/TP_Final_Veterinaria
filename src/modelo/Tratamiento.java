@@ -21,7 +21,7 @@ public class Tratamiento {
     private double precio;
     private boolean activo;
 
-    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, Consulta consulta,Mascota mascota, double precio, boolean activo) {
+    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, Consulta consulta, Mascota mascota, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
@@ -37,7 +37,7 @@ public class Tratamiento {
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.consulta = consulta;
-        this.mascota = mascota;        
+        this.mascota = mascota;
         this.precio = precio;
         this.activo = activo;
     }
@@ -53,11 +53,11 @@ public class Tratamiento {
         this.idTratamiento = idTratamiento;
     }
 
-    public String gettipoTratamiento() {
+    public String getTipoTratamiento() {
         return tipoTratamiento;
     }
 
-    public void settipoTratamiento(String tipoTratamiento) {
+    public void setTipoTratamiento(String tipoTratamiento) {
         this.tipoTratamiento = tipoTratamiento;
     }
 
@@ -92,7 +92,6 @@ public class Tratamiento {
     public void setMascota(Mascota mascota) {
         this.mascota = mascota;
     }
-    
 
     public double getPrecio() {
         return precio;
@@ -112,7 +111,7 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamient{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
+        return "Tratamiento{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", mascota=" + mascota + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
     @Override
