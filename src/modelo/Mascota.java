@@ -6,60 +6,57 @@
 package modelo;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
  * @author Manuel Belgrano Nº3
  */
 public class Mascota {
-    int id_mascota;
-    String alias;
-    String sexo;
-    String especie;
-    String raza;
-    String color_pelaje;
-    Date fecha_nac;
-    double peso_actual;
-    double peso_promedio;
-    boolean activo;
-    Cliente cliente;
+    private int idMascota;
+    private String alias;
+    private String sexo;
+    private String especie;
+    private String raza;
+    private String colorPelaje;
+    private Date fechaNac;
+    private double pesoActual;
+    private boolean activo;
+    private Cliente cliente;
 
-    public Mascota(int id_mascota, String alias, String sexo, String especie, String raza, String color_pelaje, Date fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente) {
-        this.id_mascota = id_mascota;
+    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, boolean activo, Cliente cliente) {
+        this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.color_pelaje = color_pelaje;
-        this.fecha_nac = fecha_nac;
-        this.peso_actual = peso_actual;
-        this.peso_promedio = peso_promedio;
+        this.colorPelaje = colorPelaje;
+        this.fechaNac = fechaNac;
+        this.pesoActual = pesoActual;
         this.activo = activo;
         this.cliente = cliente;
     }
 
-    public Mascota(String alias, String sexo, String especie, String raza, String color_pelaje, Date fecha_nac, double peso_actual, double peso_promedio, boolean activo) {
-        this.id_mascota = id_mascota;
+    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, boolean activo) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.color_pelaje = color_pelaje;
-        this.fecha_nac = fecha_nac;
-        this.peso_actual = peso_actual;
-        this.peso_promedio = peso_promedio;
+        this.colorPelaje = colorPelaje;
+        this.fechaNac = fechaNac;
+        this.pesoActual = pesoActual;
         this.activo = activo;
     }
            
     public Mascota() {
     }
 
-    public int getId_mascota() {
-        return id_mascota;
+    public int getIdMascota() {
+        return idMascota;
     }
 
-    public void setId_mascota(int id_mascota) {
-        this.id_mascota = id_mascota;
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
     }
 
     public String getAlias() {
@@ -94,38 +91,30 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public String getColor_pelaje() {
-        return color_pelaje;
+    public String getColorPelaje() {
+        return colorPelaje;
     }
 
-    public void setColor_pelaje(String color_pelaje) {
-        this.color_pelaje = color_pelaje;
+    public void setColorPelaje(String colorPelaje) {
+        this.colorPelaje = colorPelaje;
     }
 
-    public Date getFecha_nac() {
-        return fecha_nac;
+    public Date getFechaNac() {
+        return fechaNac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
-        this.fecha_nac = fecha_nac;
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
-    public double getPeso_actual() {
-        return peso_actual;
+    public double getPesoActual() {
+        return pesoActual;
     }
 
-    public void setPeso_actual(double peso_actual) {
-        this.peso_actual = peso_actual;
+    public void setPesoActual(double pesoActual) {
+        this.pesoActual = pesoActual;
     }
-
-    public double getPeso_promedio() {
-        return peso_promedio;
-    }
-
-    public void setPeso_promedio(double peso_promedio) {
-        this.peso_promedio = peso_promedio;
-    }
-
+    
     public boolean isActivo() {
         return activo;
     }
@@ -140,6 +129,40 @@ public class Mascota {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.alias);
+        hash = 17 * hash + Objects.hashCode(this.cliente);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mascota other = (Mascota) obj;
+        if (!Objects.equals(this.alias, other.alias)) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoActual;
     }
     
     
